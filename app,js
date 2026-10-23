@@ -1,0 +1,61 @@
+// ==========================================
+// Task 4: utils (Helper Functions)
+// ==========================================
+function formatName(name) {
+  return name.trim().toUpperCase();
+}
+
+
+// ==========================================
+// Task 2: student (Default Export equivalent)
+// ==========================================
+function printStudentInfo(name, course) {
+  console.log(`[Default Export] Student Name: ${name}, Course: ${course}`);
+}
+
+
+// ==========================================
+// Task 4: studentService (Business Logic)
+// ==========================================
+const students = [
+  { id: 1, name: 'john doe', course: 'Mathematics' },
+  { id: 2, name: 'jane smith', course: 'Physics' }
+];
+
+function getStudentCourse(id) {
+  const student = students.find(s => s.id === id);
+  if (!student) return 'Student not found';
+  
+  return `${formatName(student.name)} is enrolled in ${student.course}.`;
+}
+
+
+// ==========================================
+// Task 3: Import Aliases & Task 5: Debugging Notes
+// ==========================================
+/*
+  - Task 3 (Import Aliases): 
+    When importing functions from separate modules, you can rename them locally:
+    import { calculateTotal as computeSum } from './mathUtils.js';
+
+  - Task 5 (Debugging):
+    If you misspell a function name (e.g., getting 'Named export not found') 
+    or write an invalid path, Node.js will throw a SyntaxError or ModuleNotFoundError.
+    Always double-check your relative paths ('./') and exact export/import names.
+*/
+
+
+// ==========================================
+// Task 4 & Main Execution (main.js logic)
+// ==========================================
+function runProgram() {
+  console.log("--- Running Task 2: Student Info ---");
+  printStudentInfo('Alice Smith', 'Computer Science');
+
+  console.log("\n--- Running Task 4: Student Service & Utils ---");
+  console.log(getStudentCourse(1));
+  console.log(getStudentCourse(2));
+}
+
+// Execute the program
+runProgram();
